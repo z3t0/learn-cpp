@@ -12,7 +12,7 @@ int main() {
 
 
   // number of blanks surrounding the greeting
-  const int pad = 1;
+  const int pad = 0;
 
   // total number of rows to write
   const int rows = pad * 2 + 3;
