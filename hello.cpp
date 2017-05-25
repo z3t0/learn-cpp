@@ -3,20 +3,25 @@
 
 int main() {
   std::string name;
+  unsigned int padRow;
+  unsigned int padColumn;
 
   // Get name
   std::cout << "Please enter your name: ";
-               std::cin >> name;
+  std::cin >> name;
+
+  // get Padding
+  std::cout << "Please enter the row padding: ";
+  std::cin >> padRow;
+
+  std::cout << "Please enter the column padding: ";
+  std::cin >> padColumn;
 
   const std::string hello = "Hello, " + name + "!";
 
 
-  // number of blanks surrounding the greeting
-  const int pad = 0;
-  const int padColumn = 3;
-
   // total number of rows to write
-  const int rows = pad * 2 + 3;
+  const int rows = padRow * 2 + 3;
 
   std::cout << std::endl;
 
@@ -24,11 +29,11 @@ int main() {
   const std::string::size_type cols = hello.size() + padColumn * 2 + 2;
 
   for (int r = 0; r < rows; r++) {
-    // write a row of output 
+    // write a row of output
     std::string::size_type c = 0;
     while (c != cols) {
       // hello
-      if (r == pad + 1 && c == padColumn + 1) {
+      if (r == padRow + 1 && c == padColumn + 1) {
         std::cout << hello;
         c += hello.size();
       } else {
