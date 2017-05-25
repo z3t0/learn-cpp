@@ -1,24 +1,48 @@
 #include <iostream>
 
+
 int main() {
   std::string name;
 
   // Get name
   std::cout << "Please enter your name: ";
-  std::cin >> name;
+               std::cin >> name;
 
-  const std::string hello = "* Hello, " + name + "! *";
+  const std::string hello = "Hello, " + name + "!";
 
-  // Frame
-  std::string frame1(hello.size(), '*');
-  std::string spaces(hello.size()/2, ' ');
-  std::string second= "* " + spaces + " *";
 
-  std::cout << frame1 << std::endl;
-  std::cout << second<< std::endl;
-  std::cout << hello << std::endl;
-  std::cout << second<< std::endl;
-  std::cout << frame1 << std::endl;
+  // number of blanks surrounding the greeting
+  const int pad = 1;
+
+  // total number of rows to write
+  const int rows = pad * 2 + 3;
+
+  std::cout << std::endl;
+
+  // write rows of output
+  const std::string::size_type cols = hello.size() + pad * 2 + 2;
+
+  for (int r = 0; r < rows; r++) {
+    // write a row of output 
+    std::string::size_type c = 0;
+    while (c != cols) {
+      // hello
+      if (r == pad + 1 && c == pad + 1) {
+        std::cout << hello;
+        c += hello.size();
+      } else {
+        if (r == 0 || r == rows -1 || c == 0 || c == cols -1) {
+          std::cout << "*";
+        } else {
+          std::cout << " ";
+        }
+        ++c;
+      }
+    }
+    std::cout << std::endl;
+  }
+
+  std::cout << std::endl;
 
   return 0;
 }
