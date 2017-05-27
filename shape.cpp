@@ -15,7 +15,8 @@ int main() {int option = -1;
       break;
   }
 
-  // Triangle
+  // Triangle : need to figure this out
+  // TODO
   if (option == 1) {
     unsigned int width = 0;
     unsigned int height = 0;
@@ -32,11 +33,14 @@ int main() {int option = -1;
     }
 
     for (unsigned int h = 0; h < height; h++) {
-      // Top
-      // odd
-      // if (width % 2 == 1) {
-      //   std::cout <<
-      // }
+      for (unsigned int w = 0; w < width; w++) {
+        if (w == 0 || w == width - 1 || h == height - 1) {
+          std::cout << "*";
+        } else {
+          std::cout << " ";
+        }
+      }
+      std::cout << std::endl;
     }
 
 
@@ -73,7 +77,33 @@ int main() {int option = -1;
 
   // Rectangle
   else if (option == 3) {
+    unsigned int width = 0;
+    unsigned int height = 0;
 
+    while (1) {
+      std::cout << "Enter width: ";
+      std::cin >> width;
+
+      std::cout << "Enter height: ";
+      std::cin >> height;
+
+      if (width && height)
+        break;
+    }
+
+    for (unsigned int h = 0; h < height; h++) {
+      for (unsigned int w = 0; w < width; w++) {
+        if (w == 0 || h == 0 || h == height - 1 || w == width -1) {
+          std::cout << "*";
+        } else {
+          std::cout << " ";
+        }
+
+        std::cout << " ";
+      }
+      std::cout << std::endl;
+    }
   }
+
   return 0;
 }
