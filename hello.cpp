@@ -21,14 +21,14 @@ int main() {
 
 
   // total number of rows to write
-  const int rows = padRow * 2 + 3;
+  const unsigned int rows = padRow * 2 + 3;
 
   std::cout << std::endl;
 
   // write rows of output
   const std::string::size_type cols = hello.size() + padColumn * 2 + 2;
 
-  for (int r = 0; r < rows; r++) {
+  for (unsigned int r = 0; r < rows; r++) {
     // write a row of output
     std::string::size_type c = 0;
     while (c != cols) {
@@ -39,16 +39,27 @@ int main() {
       } else {
         if (r == 0 || r == rows -1 || c == 0 || c == cols -1) {
           std::cout << "*";
+          ++c;
         } else {
-          std::cout << " ";
+          if (r == padRow + 1) {
+            // if hello row
+            std::cout << " ";
+            ++c;
+          }
+
+          else {
+            // If padding line
+            std::string::size_type space_size = cols - padColumn;
+            std::string spaces(space_size, ' ');
+            std::cout << spaces;
+
+            c += spaces.size();
+          }
         }
-        ++c;
       }
     }
     std::cout << std::endl;
   }
-
-  std::cout << std::endl;
 
   return 0;
 }
