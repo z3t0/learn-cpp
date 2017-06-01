@@ -18,24 +18,29 @@ int main() {int option = -1;
   // Triangle : need to figure this out
   // TODO
   if (option == 1) {
-    unsigned int width = 0;
-    unsigned int height = 0;
+    unsigned int length = 0;
 
     while (1) {
-      std::cout << "Enter width: ";
-      std::cin >> width;
+      std::cout << "Enter length: ";
+      std::cin >> length;
 
-      std::cout << "Enter height: ";
-      std::cin >> height;
 
-      if (height && width)
+      if (length)
         break;
     }
 
-    for (unsigned int h = 0; h < height; h++) {
-      for (unsigned int w = 0; w < width; w++) {
-        if (w == 0 || w == width - 1 || h == height - 1) {
+    for (unsigned int l = 0; l < length; l++) {
+      // each row
+
+      for (unsigned int ll = 0; ll < length; ll++ ) {
+        // each character
+        if (ll == 0 || ll == l) {
+          // first character
           std::cout << "*";
+        } else if (l == length - 1) {
+          std::string line(length, '*');
+          std::cout << line;
+          break;
         } else {
           std::cout << " ";
         }
